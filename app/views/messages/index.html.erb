@@ -2,28 +2,38 @@
   <div class="panel-heading">
     <h3>メッセージ一覧</h3>
   </div>
-    
   <div class="panel-body">
     <% @messages.each do |message| %>
-    　<h4><span class="label label-info">投稿者：<%= message.name %></span></h4>
-      <%= message.body %>
-      <br><br>
+      <table style="width: 100%;word-break:break-all;">
+        <tbody>
+          <tr><td>
+            <h4><div class="label label-info">投稿者：<%= message.name %></div></h4>
+          </td></tr>
+          <tr><td>
+            <div class="panel-message"><%= message.body %></div>
+          </td></tr>
+        </tbody>
+      </table>
     <% end %>
   </div>
 </div>
 
 <%= form_for(Message.new) do |f| %>
-  <div class="col-md-3">投稿者名:</div>
-  <div class="col-md-9">
-    <%= f.text_field :name %>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-2">投稿者名:</div>
+    <div class="col-sm-10">
+      <%= f.text_field :name %>
+    </div>
   </div>
-  <br>
-  <div class="col-md-3">メッセージ内容:</div>
-  <div class="col-md-9">
-    <%= f.text_area :body, :size => "94x5" %>
+  <div class="row">
+    <div class="col-sm-2">メッセージ内容:</div>
+    <div class="col-sm-7">
+      <%= f.text_area :body, :size => "50%" %>
+    </div>
+    <div class="col-sm-3">
+      <%= f.submit class: "btn btn-danger" %>
+    </div>
   </div>
-  <br>
-  <div class="col-md-3">
-    <%= f.submit class: "btn btn-danger btn-lg" %></div>
-  <div class="col-md-9">
+</div>
 <% end %>
