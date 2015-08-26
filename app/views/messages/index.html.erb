@@ -1,15 +1,24 @@
-<div class="panel panel-default">
+<div class="panel panel-primary">
   <div class="panel-heading">
-    メッセージ一覧
+    <h3>メッセージ一覧</h3>
   </div>
-
   <div class="panel-body">
     <% @messages.each do |message| %>
-      <span class="label label-info"><%= message.name %></span>
-        <%= message.body %>
-        (<%= link_to "edit" , edit_message_path(message) %>
-         <%= link_to "destroy" , message , method: :delete, data: { confirm: '削除してもよろしいですか？' } %>
-        )
+      <table style="width: 100%;word-break:break-all;">
+        <tbody>
+          <tr><td>
+            <h4><div class="label label-info">投稿者：<%= message.name %>
+            ［<%= link_to "edit" , edit_message_path(message) %>｜
+             <%= link_to "destroy" , message , method: :delete, data: { confirm: '削除してもよろしいですか？' } %>
+            ］
+            </div></h4>
+          </td></tr>
+          <tr><td>
+            <div class="panel-message"><%= message.body %></div>
+          </td></tr>
+        </tbody>
+      </table>
+
       <br>
     <% end %>
   </div>
