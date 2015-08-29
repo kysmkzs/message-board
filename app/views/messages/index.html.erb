@@ -7,10 +7,10 @@
       <table style="width: 100%;word-break:break-all;">
         <tbody>
           <tr><td>
-            <h4><div class="label label-info">投稿者：<%= message.name %>
-            ［<%= link_to "edit" , edit_message_path(message) %>｜
+            <h4><div class="label label-info">投稿者：<%= message.name %> (<%= message.age %>歳)
+            【 <%= link_to "edit" , edit_message_path(message) %>｜
              <%= link_to "destroy" , message , method: :delete, data: { confirm: '削除してもよろしいですか？' } %>
-            ］
+            】
             </div></h4>
           </td></tr>
           <tr><td>
